@@ -2,25 +2,15 @@
 #include <stdlib.h>
 
 using namespace std;
-class   Tree
+class Tree
 {
     public:
-       Tree(){
-       };
-        Tree(int data): data_(data), parent(NULL), left(NULL), right(NULL)
-        {
-
-        }
-        Tree(int data, Tree *parent, Tree   *left, Tree *right)
-        {
-
-        }
-        int     data_;
-        Tree    *parent;
-        Tree    *left;
-        Tree    *right;
-
-
+        int data_;
+        Tree *parent;
+        Tree *left;
+        Tree *right;
+        // constructor to initialize data_ and pointers
+        Tree(int data) : data_(data), parent(NULL), left(NULL), right(NULL) {}
 };
 
 void    transpant_algo(Tree *&head, Tree    *u, Tree    *v)
@@ -92,15 +82,15 @@ void    insert(Tree *&head, Tree *new_ele)
         y->right = new_ele;
 }
 
-Tree    *get_parent(Tree    *head ,int value)
+Tree    *get_parent(Tree *head, int value)
 {
     if (head == NULL)
         return NULL;
-    if (head->left->data_ == value || head->right->data_ == value)
+    if (head->left != NULL && head->left->data_ == value || head->right != NULL && head->right->data_ == value)
         return head;
     if (value < head->data_)
-        return  get_parent(head->left, value);
-    else 
+        return get_parent(head->left, value);
+    else
         return get_parent(head->right, value);
 }
 
@@ -131,4 +121,5 @@ int main()
     delete_(head, snagat);
 
     inorder_tree(head);
+    return 0;
 }
