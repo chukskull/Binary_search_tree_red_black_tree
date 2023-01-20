@@ -28,7 +28,7 @@ void    transpant_algo(Tree *&head, Tree    *u, Tree    *v)
     }
 }
     
-Tree    *minimum(Tree   *&head)
+Tree    *minimum(Tree   *head)
 {
     Tree    *current = head;
 
@@ -86,7 +86,7 @@ Tree    *get_parent(Tree *head, int value)
 {
     if (head == NULL)
         return NULL;
-    if (head->left != NULL && head->left->data_ == value || head->right != NULL && head->right->data_ == value)
+    if ((head->left != NULL && head->left->data_ == value) || (head->right != NULL && head->right->data_ == value))
         return head;
     if (value < head->data_)
         return get_parent(head->left, value);
