@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #define RED 1
-#define NIG 0
+#define BLCK 0
 #define COUNT 10
 using namespace std;
 class Tree
@@ -154,8 +154,8 @@ void    RB_insert_Fixup(Tree *&head, Tree *new_elem)
             if ( y && y->color == RED)
             {
                 // cerr << "oop sucks " << endl;
-                new_elem->parent->color = NIG;
-                y->color = NIG;
+                new_elem->parent->color = BLCK;
+                y->color = BLCK;
                 new_elem->parent->parent->color = RED;
                 new_elem = new_elem->parent->parent;
             }
@@ -166,7 +166,7 @@ void    RB_insert_Fixup(Tree *&head, Tree *new_elem)
                     new_elem = new_elem->parent;
                     left_rotate(head, new_elem);
                 }
-                new_elem->parent->color = NIG;
+                new_elem->parent->color = BLCK;
                 new_elem->parent->parent->color = RED;
                 right_rotate(head, new_elem->parent->parent);
 
@@ -177,8 +177,8 @@ void    RB_insert_Fixup(Tree *&head, Tree *new_elem)
             Tree    *y = new_elem->parent->parent->left;
             if (y && y->color == RED)
             {
-                new_elem->parent->color = NIG;
-                y->color = NIG;
+                new_elem->parent->color = BLCK;
+                y->color = BLCK;
                 new_elem->parent->parent->color = RED;
                 new_elem = new_elem->parent->parent;
             }
@@ -192,7 +192,7 @@ void    RB_insert_Fixup(Tree *&head, Tree *new_elem)
                     cerr <<" AVALANCHE " <<new_elem_2->data_ << endl;
                     print2D(head);
                 }
-                new_elem->parent->color = NIG;
+                new_elem->parent->color = BLCK;
                 new_elem->parent->parent->color = RED;
                 cerr << "ur lips soft like winter " <<new_elem->parent->parent->data_ << endl;
                 left_rotate(head, new_elem->parent->parent);
@@ -200,7 +200,7 @@ void    RB_insert_Fixup(Tree *&head, Tree *new_elem)
         }
     }
     // cerr << "here " << endl;
-    head->color = NIG;
+    head->color = BLCK;
 }
 
 void    insert(Tree *&head, Tree *new_ele)
@@ -213,7 +213,7 @@ void    insert(Tree *&head, Tree *new_ele)
     new_ele->color = RED;
     if (head == NULL)
     {
-        new_ele->color = NIG;
+        new_ele->color = BLCK;
         head = new_ele;
        return ;
     }
@@ -281,7 +281,8 @@ int main()
     print2D(head);
     // print2D(head);
     // inorder_tree(head);
-    // delete_(head, snagat);
+    delete_(head, new_elem);
+    // print2D(head);
 
     return 0;
 }
