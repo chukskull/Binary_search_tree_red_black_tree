@@ -244,7 +244,7 @@ void    delete_(Tree    *&head,  int key)
         transpant_algo(head, z, z->left);
     }
     else{
-        Tree    *y = maximum(z->left);
+        Tree    *y = minimum(z->right);
         cerr << y->left->data_ << endl;
         color = y->color;
         x = y->right;
@@ -263,6 +263,9 @@ void    delete_(Tree    *&head,  int key)
     }
     if (color == BLCK)
     {
+        cerr << "every fucking time " << endl;
+        print2D(head);
+        cerr << "ok " << endl;
         RB_deletion_Fixup(head, x);
     }
     // delete z;
@@ -386,6 +389,7 @@ int main()
     delete_(head, 4);
     delete_(head, 8);
     delete_(head, 7);
+    delete_(head, 5);
     // // print2D(head);
     // delete_(head, 8);
     // print2D(head);
